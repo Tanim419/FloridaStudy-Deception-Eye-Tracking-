@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1551552029845.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "816335178",
+    "id" : "A38AFECF",
+    "lastKnownWriteTime" : 1551558481,
+    "last_content_update" : 1551558481422,
+    "path" : "~/R/figure-2.b.r",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "14,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,32 @@
+[0m[0KMicrosoft Windows [Version 10.0.17134.523][0K[?25l
+(c) 2018 Microsoft Corporation. All rights reserved.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>[0K[?25h^V[0K[?25lC:\Users\soton\Documents\FloridaExperiment>[0K[?25h> for (variable in list_of_folder) {[0K[?25l
+{ was unexpected at this time.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+   #count = count+1[0K
+[0K[?25h'+' is not recognized as an internal or external command,[0K[?25l
+operable program or batch file.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+   print(variable)[0K
+[0K[?25h'+' is not recognized as an internal or external command,[0K[?25l
+operable program or batch file.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+   subfolder=dir(variable)[0K
+'+' is not recognized as an internal or external command,[0K
+operable program or batch file.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+   numberof_folder=length(subfolder)[0K
+'+' is not recognized as an internal or external command,[0K
+operable program or batch file.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+   print(paste( variable, "has", numberof_folder, "folder[0Ks
+"))[0K
+'+' is not recognized as an internal or external command,[0K
+operable program or batch file.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+[0K
+[0K[?25h'+' is not recognized as an internal or external command,[0K[?25l
+operable program or batch file.[0K
+[0K
+C:\Users\soton\Documents\FloridaExperiment>+ }[0K[?25h

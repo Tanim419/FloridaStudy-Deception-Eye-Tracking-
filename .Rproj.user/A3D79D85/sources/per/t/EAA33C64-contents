@@ -1,0 +1,156 @@
+library(ggplot2)
+library(plotly)
+library(ggplot2)
+library(plyr)
+library(data.table)
+
+setwd("C:/Users/soton/Documents/R")
+Faculty_data<- read.csv("Faculty_GoogleScholar_Funding_Data_N4190.csv")
+
+# dfGamma = data.frame(nu75 = rgamma(100, 0.75),
+#                      nu1 = rgamma(100, 1),
+#                      nu2 = rgamma(100, 2))
+# 
+# dfGamma = stack(dfGamma)
+# 
+# p <- ggplot(dfGamma, aes(x = values)) +
+#   stat_density(aes(group = ind, color = ind),position="identity",geom="line")
+# p
+# p <- ggplotly(p)
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+# chart_link = plotly_POST(p, filename="geom_density/basic")
+# chart_link
+# 
+# 
+# p<- ggplot(Faculty_data,aes(min_year,fill = XDIndicator))+geom_density(alpha = 0.2)
+#   stat_density(aes(group=XDIndicator,color = XDIndicator),position="identity",geom="line" )
+#   
+# p
+# 
+# p <- ggplotly(p)
+# p
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+# chart_link = plotly_POST(p, filename="geom_density/basic")
+# chart_link
+# 
+# 
+# 
+# carrots <- data.frame(length = rnorm(100000, 6, 2))
+# cukes <- data.frame(length = rnorm(50000, 7, 2.5))
+
+#Now, combine your two dataframes into one.  First make a new column in each.
+# carrots$veg <- 'carrot'
+# cukes$veg <- 'cuke'
+
+#and combine into your new data frame vegLengths
+# vegLengths <- rbind(carrots, cukes)
+# p <- ggplot(vegLengths, aes(length, fill = veg)) + geom_density(alpha = 0.2)
+# 
+# p <- ggplotly(p)
+# 
+# 
+# p<-plot_ly(Faculty_data, x=Faculty_data$min_year, color = Faculty_data$XDIndicator, type = 'scatter', mode = 'lines', fill = 'tozeroy')
+# p
+
+
+
+
+# diamonds1 <- diamonds[which(diamonds$cut == "Fair"),]
+# density1 <- density(diamonds1$carat)
+# 
+# diamonds2 <- diamonds[which(diamonds$cut == "Ideal"),]
+# density2 <- density(diamonds2$carat)
+# 
+# p <- plot_ly(x = ~density1$x, y = ~density1$y, type = 'scatter', mode = 'lines', name = 'Fair cut', fill = 'tozeroy') %>%
+#   add_trace(x = ~density2$x, y = ~density2$y, name = 'Ideal cut', fill = 'tozeroy') %>%
+#   layout(xaxis = list(title = 'Carat'),
+#          yaxis = list(title = 'Density'))
+# 
+# p
+
+
+
+
+
+d1<-Faculty_data[which(Faculty_data$XDIndicator== "XD"),]
+d2<-Faculty_data[which(Faculty_data$XDIndicator== "CS"),]
+d3<-Faculty_data[which(Faculty_data$XDIndicator== "BIO"),]
+
+den1<-density(d1$min_year)
+den2<-density(d2$min_year)
+den3<-density(d3$min_year)
+
+# mean_dept <- aggregate(Faculty_data$min_year,list(Faculty_data$XDIndicator), mean)
+# pal <- c("red", "blue", "green")
+p <- plot_ly(x = ~den1$x, y = ~den1$y, type = 'scatter', mode = 'lines', name = 'XD', fill = 'tozeroy') %>%
+  add_trace(x = ~den2$x, y = ~den2$y, name = 'CS', fill = 'tozeroy') %>%
+  add_trace(x = ~den3$x, y = ~den3$y, name = 'BIO', fill = 'tozeroy')%>%
+  layout(yaxis=list(title="PDF"),xaxis = list(range = c(1955, 2015)))
+
+p 
+
+
+den4<-density(d1$KTotal)
+den5<-density(d2$KTotal)
+den6<-density(d3$KTotal)
+
+p <- plot_ly (x = ~den4$x, y = ~den4$y, type = 'scatter', mode = 'lines', name = 'XD', fill = 'tozeroy') %>%
+    add_trace(x = ~den5$x, y = ~den5$y, name = 'CS', fill = 'tozeroy') %>%
+    add_trace(x = ~den6$x, y = ~den6$y, name = 'BIO', fill = 'tozeroy')%>%
+  layout(yaxis = list(type="log",range=c(-6,-2),exponentformat = "E", autotick = FALSE),xaxis=list(range=c(0,2000)))
+
+p 
+
+
+
+den7<-density(d1$Chi)
+den8<-density(d2$Chi)
+den9<-density(d3$Chi)
+
+p <- plot_ly(x = ~den7$x, y = ~den7$y, type = 'scatter', mode = 'lines', name = 'XD', fill = 'tozeroy') %>%
+  add_trace(x = ~den8$x, y = ~den8$y, name = 'CS', fill = 'tozeroy') %>%
+  add_trace(x = ~den9$x, y = ~den9$y, name = 'BIO', fill = 'tozeroy')%>%
+  layout(yaxis = list(type = "log",range=c(-2,1), exponentformat = "E", autotick = FALSE), xaxis=list(range=c(0,1)))
+
+p
+
+
+den10<-density(d1$PRCentrality*4190)
+den11<-density(d2$PRCentrality*4190)
+den12<-density(d3$PRCentrality*4190)
+
+p <- plot_ly(x = ~den10$x, y = ~den10$y, type = 'scatter', mode = 'lines', name = 'XD', fill = 'tozeroy') %>%
+  add_trace(x = ~den11$x, y = ~den11$y, name = 'CS', fill = 'tozeroy') %>%
+  add_trace(x = ~den12$x, y = ~den12$y, name = 'BIO', fill = 'tozeroy')%>%
+  layout(yaxis = list(type = "log",range=c(-2.7,.1), exponentformat = "E", autotick = FALSE), xaxis=list(range=c(0,9)))
+
+p
+
+
+den13<-density(d1$mean_of_IF)
+den14<-density(d2$mean_of_IF)
+den15<-density(d3$mean_of_IF)
+
+p <- plot_ly(x = ~den13$x, y = ~den13$y, type = 'scatter', mode = 'lines', name = 'XD', fill = 'tozeroy') %>%
+  add_trace(x = ~den14$x, y = ~den14$y, name = 'CS', fill = 'tozeroy') %>%
+  add_trace(x = ~den15$x, y = ~den15$y, name = 'BIO', fill = 'tozeroy')%>%
+  layout(yaxis = list(type= "log",range=c(-4,0), exponentformat = "E" ,autotick = FALSE), xaxis=list(range=c(0,30)))
+
+p
+
+
+
+den16<-density(log10(d1$t_pubs_citations))
+den17<-density(log10(d2$t_pubs_citations))
+den18<-density(log10(d3$t_pubs_citations))
+
+p <- plot_ly(x = ~den16$x, y = ~den16$y, type = 'scatter', mode = 'lines', name = 'XD', fill = 'tozeroy') %>%
+  add_trace(x = ~den17$x, y = ~den17$y, name = 'CS', fill = 'tozeroy') %>%
+  add_trace(x = ~den18$x, y = ~den18$y, name = 'BIO', fill = 'tozeroy')%>%
+  layout(yaxis = list(type = "log", range=c(-4.5,0), exponentformat = "E", autotick = FALSE), xaxis=list(range=c(0,6)))
+
+p
