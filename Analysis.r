@@ -117,14 +117,3 @@ Plotting<-function(fun.data, fun.x, fun.y, session, name, y_max){
     #scale_color_manual(breaks= c("Resting-Baseline", "Baseline", "ExperimentalIT", "Experimental"), values = c("red", "red","blue", "green"))
     scale_color_manual(values = c("blue", "red", "green"))
 }
-
-
-
-# scale_y_continuous(breaks = seq(0,1, by =0.5), limits = c(0,1))
-# plot<-ggplot(subset_df)+
-#   geom_line(aes(x=Time, y=NR_PP, colour=Session, group=Session))+
-#   ylim(0.002, 0.006)
-#   
-#   plot
-# scale_x_continuous(breaks =seq(0,3500, by=500), limits = c(0,3500))
-# scale_y_continuous(breaks = seq(0,1, by =0.1), limits = c(0,1))
